@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ODSTc\\source\\repos\\GrimIron\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
+      "projectUniqueName": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
       "projectName": "Vote Calc",
-      "projectPath": "C:\\Users\\ODSTc\\source\\repos\\GrimIron\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
+      "projectPath": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
       "packagesPath": "C:\\Users\\ODSTc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ODSTc\\source\\repos\\GrimIron\\CS-OOP-assignment-1\\Vote Calc\\obj\\",
+      "outputPath": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

@@ -2,11 +2,21 @@
 
 namespace Vote_Calc
 {
+    class main
+    {
+        static void Main()
+        {
+            
+            
+        }
+    }
+    //Class for containing information regarding the countries
     class Country
     {
-        string name;
-        double pop;
-        bool eu;
+        string name;            // Stores name 
+        double pop;             // Country Population
+        bool eu;                // Wether the country is in the eu or not
+        bool is_included;
 
         static void generate_countries()
         {
@@ -14,6 +24,7 @@ namespace Vote_Calc
             Austria.name = "Austria";
             Austria.pop = 9006398;
             Austria.eu = true;
+            Austria.is_included = ask_user();
 
             Country Belgeium = new Country();
             Belgeium.name = "Belgeium";
@@ -61,11 +72,60 @@ namespace Vote_Calc
             France.eu = true;
 
             Country Germany = new Country();
+            Germany.name = "Germany";
+            Germany.pop = 83783942;
+            Germany.eu = true;
 
         }
-            
+
+        static bool ask_user()
+        {
+            while (true) // Loop indefinitely
+            {
+                Console.WriteLine("Is this country included in the vote:");
+                Console.WriteLine("Please enter yes or no");
+
+                string line = Console.ReadLine().ToLower().Trim(); // gets input and sets to lower and removes whitespace
+
+                if (line == "yes") // Check string
+                {
+                    return true;
+                }
+                else if (line == "no")
+                {
+                    return false;
+                }
+                
+
+            }
+        }
     }
 
-    class 
-}
-    cla
+    class VotingType
+    {
+        private static void Qualified_Majority()
+        {
+            // Member states == Minimum “Yes” required for adoption: (55%)
+            // Population == Minimum “Yes” required for adoption: 65%
+
+        }
+
+        private static void Reinforced_Qualified_Majority()
+        {
+            // Member states == Minimum “Yes” required for adoption: (72%)
+            // Population == Minimum “Yes” required for adoption: 65%
+        }
+
+        private static void Simple_majority()
+        {
+            // Member states == Minimum “Yes” required for adoption: (50%)
+            // Population == Minimum “Yes” required for adoption: 0%
+        }
+
+        private static void Unanimity()
+        {
+            // Member states == Minimum “Yes” required for adoption: (100%)
+            // Population == Minimum “Yes” required for adoption: 0%
+        }
+    }
+    
