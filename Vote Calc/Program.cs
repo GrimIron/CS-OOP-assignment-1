@@ -6,7 +6,10 @@ namespace Vote_Calc
     {
         static void Main()
         {
-            Generate_Countries();
+          
+        }
+        public static void list_countries()
+        {
             list<Country> countries = new list<Country>();
 
             countries.add(new Country() { num = 1, name = "Austria", pop = 9006398, eu = true });
@@ -76,6 +79,11 @@ namespace Vote_Calc
         string yes;
         string no;
         string abstain;
+
+        public static string get_name()
+        {
+            
+        }
     }
 
     class VotingType
