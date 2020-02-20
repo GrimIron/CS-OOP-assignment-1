@@ -7,10 +7,6 @@ namespace Vote_Calc
         static void Main()
         {
             Generate_Countries();
-        }
-
-        static void Generate_Countries()
-        {
             list<Country> countries = new list<Country>();
 
             countries.add(new Country() { num = 1, name = "Austria", pop = 9006398, eu = true });
@@ -40,23 +36,18 @@ namespace Vote_Calc
             countries.add(new Country() { num = 25, name = "Slovenia", pop = 2078938, eu = true });
             countries.add(new Country() { num = 26, name = "Spain", pop = 46754778, eu = true });
             countries.add(new Country() { num = 27, name = "Sweden", pop = 10099265, eu = true });
-
-        }
-            
-
-
         }
     }
     //Class for containing information regarding the countries
     class Country
     {
-        int num;
+        int num;                // The number of the country
         string name;            // Stores name 
         double pop;             // Country Population
         bool eu;                // Wether the country is in the eu or not
 
- 
-        static bool ask_user()
+        
+        static void get_vote()
         {
             while (true) // Loop indefinitely
             {
@@ -79,9 +70,17 @@ namespace Vote_Calc
         }
     }
 
+    class SingleVote
+    {
+        string name;
+        string yes;
+        string no;
+        string abstain;
+    }
+
     class VotingType
     {   
-        /// int required_pop = function();
+        // int required_pop = function();
         private static void Qualified_Majority()
         {
             // Member states == Minimum “Yes” required for adoption: (55%)
