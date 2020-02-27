@@ -8,24 +8,25 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\40017446\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ODSTc\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\40017446\\Source\\Repos\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
+      "projectUniqueName": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
       "projectName": "Vote Calc",
-      "projectPath": "C:\\Users\\40017446\\Source\\Repos\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
-      "packagesPath": "C:\\Users\\40017446\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\40017446\\Source\\Repos\\CS-OOP-assignment-1\\Vote Calc\\obj\\",
+      "projectPath": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
+      "packagesPath": "C:\\Users\\ODSTc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\40017446\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ODSTc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -48,10 +49,21 @@
     "frameworks": {
       "netcoreapp3.1": {
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
