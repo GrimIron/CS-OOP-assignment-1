@@ -20,3 +20,14 @@ C:\Users\ODSTc\Desktop\OOP 1\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3
 C:\Users\ODSTc\Desktop\OOP 1\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.runtimeconfig.dev.json
 C:\Users\ODSTc\Desktop\OOP 1\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.dll
 C:\Users\ODSTc\Desktop\OOP 1\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.pdb
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.exe
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.deps.json
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.runtimeconfig.json
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.runtimeconfig.dev.json
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.dll
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\bin\Debug\netcoreapp3.1\Vote Calc.pdb
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\obj\Debug\netcoreapp3.1\Vote Calc.csprojAssemblyReference.cache
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\obj\Debug\netcoreapp3.1\Vote Calc.AssemblyInfoInputs.cache
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\obj\Debug\netcoreapp3.1\Vote Calc.AssemblyInfo.cs
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\obj\Debug\netcoreapp3.1\Vote Calc.dll
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Vote Calc\obj\Debug\netcoreapp3.1\Vote Calc.pdb

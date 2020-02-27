@@ -18,6 +18,7 @@ namespace Vot_calculator_v2
             vc.list_countries();
             vc.list_votes();
             vc.votes_to_countries();
+            vt.qualified_majority();
 
 
         }
@@ -30,13 +31,24 @@ namespace Vot_calculator_v2
         private static List<Country> yes_votes = new List<Country>();
         private static List<Country> no_votes = new List<Country>();
         private static List<Country> abstain_votes = new List<Country>();
+        public static double total_pop = calculation();
+        public static double total_states;
 
 
         //Methods
-        public List<Country> get_list()
+        public List<Country> return_list()
         {
             return countries;
         }            //Returns the list of countries
+        public double return_total_pop()
+        {
+            return total_pop;
+        }
+        public double return_total_states()
+        {
+            return total_states;
+        }
+
         public List<Country> list_countries()
         {
             // Populate list
@@ -126,15 +138,18 @@ namespace Vot_calculator_v2
                 }
             }
         }           //Seperates the countries into seperate lists depending on how they voted
-        public void calculation()
+        public static double calculation()
         {
             int counter = 0;
-            double total_pop = 0;
-
+            
             foreach (Country c in yes_votes)
             {
                 total_pop += c.pop;
+                total_states++;
+                counter++;
             }
+
+            return total_pop;
         }
     }
 
@@ -151,9 +166,10 @@ namespace Vot_calculator_v2
     {
         //Data
         private static Voting_Calculator vc = new Voting_Calculator();
+        private static List<Country> countries = vc.return_list();
+        private static total_states = vc.
         private static double minimum_population = get_minimum_pop();
         private static double minimum_states = get_minimum_states();
-
 
         //Methods
         public static bool qualified_majority(double pop, double states)
@@ -167,21 +183,18 @@ namespace Vot_calculator_v2
                 return false;
             }
         }
-
+        
         private static double get_minimum_pop()
         {
-            List<Country> countries = vc.get_list();
-
-            double total = 0; //Total population
             int counter = 0;  //Counter that keeps track of which country in the list needs to be read
 
             foreach (Country c in countries) //Goes through the list of countries, and add their pop to the total
             {
-                total += countries[counter].pop;
+                total_pop += countries[counter].pop;
                 counter++;
             }
 
-            double minimum_pop = (total * 65) * 0.01;
+            double minimum_pop = (total_pop * 65) * 0.01;
 
             Console.WriteLine(minimum_pop);
             return minimum_pop;
@@ -189,8 +202,6 @@ namespace Vot_calculator_v2
 
         private static double get_minimum_states()
         {
-            List<Country> countries = vc.get_list();
-
             double total = 0;
 
             foreach (Country c in countries) //Goes through the list of countries, and add their pop to the total

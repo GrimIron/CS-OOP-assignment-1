@@ -8,23 +8,25 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\ODSTc\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\40017446\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
+      "projectUniqueName": "C:\\Users\\40017446\\Source\\Repos\\GrimIron\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
       "projectName": "Vote Calc",
-      "projectPath": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
-      "packagesPath": "C:\\Users\\ODSTc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ODSTc\\Desktop\\OOP 1\\CS-OOP-assignment-1\\Vote Calc\\obj\\",
+      "projectPath": "C:\\Users\\40017446\\Source\\Repos\\GrimIron\\CS-OOP-assignment-1\\Vote Calc\\Vote Calc.csproj",
+      "packagesPath": "C:\\Users\\40017446\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\40017446\\Source\\Repos\\GrimIron\\CS-OOP-assignment-1\\Vote Calc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ODSTc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\40017446\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
