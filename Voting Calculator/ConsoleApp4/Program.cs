@@ -8,44 +8,173 @@ namespace Vot_calculator_v2
     {
         static void Main(string[] args)
         {
+            welcome();              //the welcome message
+            prog();                 //the calculator
+
+            Console.ReadKey();
+        }
+        
+        //Contains the Welcome messages
+        private static void welcome()
+        {
             Console.WriteLine("Welcome to the Voting Calculator!");
             Console.WriteLine();
             Console.WriteLine("please press any key to begin the voting...");
             Console.WriteLine();
 
             Console.ReadKey();
+        } 
 
-            Voting_Calculator vc = new Voting_Calculator();         //initialises the Class Voting_Calculator
-            List<Country> countries = vc.list_countries();          //Generates a list of countries
-            
+        //Contains the Classes and functions for the Calculator 
+        private static void prog()
+        {
+            Voting_Calculator vc = new Voting_Calculator();                             //Initialises the Class Voting_Calculator
+            Vote vote = new Vote();                                                     //Initialises the Class Vote
 
-            Vote vote = new Vote();                                 //initialises the Class Vote
-            vote.get_votes(countries);
-            vote.votes_to_countries(countries);                     //Separates the Countries into different list depending on the votes
-            List<Country> yes = vote.return_yes_list();
-            List<Country> no = vote.return_no_list();
-            List<Country> abstain = vote.return_abstain_list();
+            List<Country> countries = vc.list_countries();                              //Generates a list of countries
+            vote.get_votes(countries);                                                  //Asks the user for the vote for the countries and adds it the the list of countries
+            bool pass = vc.qualified_majority(countries, vote.return_yes_list());       //Returns a true or false value based on the qualified majority rule set
 
+            result(pass);                                                               //Runs the function result() the output wether the vote passed or not
 
-            Vote_type vt = new Vote_type();
-            vt.get_minimum_pop(countries);
-            vt.get_minimum_states(countries);
+            vote.how_voted();                                                           //Displays how many countries voted for each vote
+        }
 
-            vc.calculate_total_pop_and_states(yes);
-
-            bool pass = vt.qualified_majority(vc.total_pop, vc.total_states);
-
-            Console.WriteLine(pass);
-            Console.ReadLine();
+        //Takes in a bool from prog() and outputs wether the vote has passed or not
+        private static void result(bool pass)
+        {
+            if (pass == true)
+            {
+                Console.WriteLine("The vote has Passed!");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("The vote has Failed!");
+                Console.WriteLine();
+            }
         }
     }
 
-    // Contains the list of countries and functions that have effects on them  
+    class Vote
+    {
+        private static List<Country> yes_votes = new List<Country>();
+        private static List<Country> no_votes = new List<Country>();
+        private static List<Country> abstain_votes = new List<Country>();
+
+        //Asks the user for the votes and sets them to the main country list and separates them into different lists
+        public string get_votes(List<Country> countries)
+        {
+            int counter = 0;
+
+            foreach (Country c in countries)
+            {
+                string name = countries[counter].name;
+                int answer;
+
+                do
+                {
+                    Console.WriteLine("please enter " + name + "'s vote:");
+                    Console.WriteLine("Enter 1 for yes");
+                    Console.WriteLine("Enter 2 for no");
+                    Console.WriteLine("Enter 3 for abstain");
+                }
+                while (!int.TryParse(Console.ReadLine(), out answer) || answer > 3);
+
+                if (answer == 1)
+                {
+                    countries[counter].vote = 1;
+                    yes_votes.Add(countries[counter]);
+                    //Console.WriteLine("ans 1");
+                    counter++;
+                }
+                else if (answer == 2)
+                {
+                    countries[counter].vote = 2;
+                    no_votes.Add(countries[counter]);
+                    //Console.WriteLine("ans 2");
+                    counter++;
+                }
+                else if (answer == 3)
+                {
+                    countries[counter].vote = 3;
+                    abstain_votes.Add(countries[counter]);
+                    //Console.WriteLine("ans 3");
+                    counter++;
+                }
+            }
+            return "Error";
+        }
+
+        //Returns the list yes_votes
+        public List<Country> return_yes_list()
+        {
+            return yes_votes;
+        }       
+
+        //Displays how many countries votes for each vote e.g. yes: 20  no: 5  abstain: 2
+        public void how_voted()
+        {
+            Console.WriteLine("votes for yes:    " + yes_list_total());
+            Console.WriteLine("Votes for no:     " + no_list_total());
+            Console.WriteLine("Votes for abstain:" + abstain_list_total());
+        }
+
+        //Counts how many countries voted yes
+        private int yes_list_total()
+        {
+            int counter = 0;
+            foreach (Country c in yes_votes)
+            {
+                counter++;
+            }
+
+            return counter;
+        }
+
+        //Counts how many countries voted no
+        private int no_list_total()
+        {
+            int counter = 0;
+            foreach (Country c in no_votes)
+            {
+                counter++;
+            }
+
+            return counter;
+        }
+
+        //Counts how many countries voted abstain
+        private int abstain_list_total()
+        {
+            int counter = 0;
+            foreach (Country c in abstain_votes)
+            {
+                counter++;
+            }
+
+            return counter;
+        }
+
+    }
+
+    // Stores the data used by countries  
+    class Country
+    {
+        //Data
+        public int num { get; set; }
+        public string name { get; set; }
+        public double pop { get; set; }
+        public int vote { get; set; }
+    }
+
+    // Contains the methods for determining if the vote passed or not, and calculates the minimum pop and states needed for the voting methods
     class Voting_Calculator
     {
-        private List<Country> countries = new List<Country>();
-        public double total_pop = 0;
-        public double total_states = 0;
+        private static double minimum_population {get; set;}
+        private static int minimum_states { get; set; }
+        private double total_pop = 0;
+        private double total_states = 0;
 
         //Generates the list of countries
         public List<Country> list_countries()
@@ -83,8 +212,8 @@ namespace Vot_calculator_v2
             return countries;
         }
 
-        //add the number of states in the yes vote list and returns, and calculates their total pop
-        public void calculate_total_pop_and_states(List<Country> yes_votes)
+        //Add the number of states in the yes vote list and returns, and adds their total pop together
+        private void calculate_total_pop_and_states(List<Country> yes_votes)
         {
             int counter = 0;
 
@@ -98,125 +227,15 @@ namespace Vot_calculator_v2
                 counter++;
             }
         }
-
-    }
-
-    class Vote
-    {
-        private static List<Country> yes_votes = new List<Country>();
-        private static List<Country> no_votes = new List<Country>();
-        private static List<Country> abstain_votes = new List<Country>();
-
-        //Asks the user for the votes and sets them to the country list
-        public string get_votes(List<Country> countries)
+        
+        //Contans the method for working out the result of the vote using a qualified majority
+        public bool qualified_majority(List<Country> countries, List<Country> yes_votes)
         {
-            int counter = 0;
+            calculate_total_pop_and_states(yes_votes);
+            get_minimum_pop(countries, 65);     //total pop needs to be of 65% of minimum pop to pass
+            get_minimum_states(countries, 55);  //total states needs to be of 55% of minimum states to pass
 
-            foreach (Country c in countries)
-            {
-                string name = countries[counter].name;
-                int answer;
-
-                do
-                {
-                    Console.WriteLine("please enter " + name + "'s vote:");
-                    Console.WriteLine("Enter 1 for yes");
-                    Console.WriteLine("Enter 2 for no");
-                    Console.WriteLine("Enter 3 for abstain");
-                }
-                while (!int.TryParse(Console.ReadLine(), out answer) || answer > 3);
-
-                if (answer == 1)
-                {
-                    countries[counter].vote = 1;
-                    //Console.WriteLine("ans 1");
-                    counter++;
-                }
-                else if (answer == 2)
-                {
-                    countries[counter].vote = 2;
-                    //Console.WriteLine("ans 2");
-                    counter++;
-                }
-                else if (answer == 3)
-                {
-                    countries[counter].vote = 3;
-                    //Console.WriteLine("ans 3");
-                    counter++;
-                }
-            }
-            return "Error";
-
-        }
-
-        //Seperates the countries into seperate lists depending on how they voted
-        public void votes_to_countries(List<Country> countries)
-        {
-            int counter = 0;
-
-            foreach (Country c in countries)
-            {
-                //Console.WriteLine(countries[counter].name);
-                //Console.WriteLine(countries[counter].vote);
-                if (countries[counter].vote == 1)
-                {
-                    yes_votes.Add(countries[counter]);
-                    counter++;
-                }
-                else if (countries[counter].vote == 2)
-                {
-                    no_votes.Add(countries[counter]);
-                    counter++;
-                }
-                else
-                {
-                    abstain_votes.Add(countries[counter]);
-                    counter++;
-                }
-            }
-        }
-
-        public List<Country> return_yes_list()
-        {
-            return yes_votes;
-        }
-
-        public List<Country> return_no_list()
-        {
-            return no_votes;
-        }
-
-        public List<Country> return_abstain_list()
-        {
-            return abstain_votes;
-        }
-    }
-
-    // Stores the data used by countries  
-    class Country
-    {
-        //Data
-        public int num { get; set; }
-        public string name { get; set; }
-        public double pop { get; set; }
-        public int vote { get; set; }
-    }
-
-    // Contains the methods for determining if the vote passed or not, and calculates the minimum pop and states needed for the voting methods
-    class Vote_type
-    {
-        //Data
-        private static double minimum_population {get; set;}
-        private static double minimum_states { get; set; }
-
-        //Methods
-        public bool qualified_majority(double pop, double states)
-        {
-            //Console.WriteLine(pop);
-            //Console.WriteLine(states);
-            Console.WriteLine(minimum_population);
-            Console.WriteLine(minimum_states);
-            if (pop >= minimum_population && states >= minimum_states)
+            if (total_pop >= minimum_population && total_states >= minimum_states)
             {
                 return true;
             }
@@ -226,41 +245,39 @@ namespace Vot_calculator_v2
             }
         }
 
-        public void get_minimum_pop(List<Country> countries)
+        //Gets the minimum percentage of pop needed for the vote to pass. the percentage value can be changed via argument
+        private static void get_minimum_pop(List<Country> countries, int percentage)
         {
-            int counter = 0;  //Counter that keeps track of which country in the list needs to be read
+            int counter = 0;        //Counter that keeps track of which country in the list needs to be read
             double total_pop = 0;
-
-            Console.WriteLine("here");
-
-            foreach (Country c in countries) //Goes through the list of countries, and add their pop to the total
+            
+            //Goes through the list of countries, and add their pop to the total
+            foreach (Country c in countries) 
             {
-                Console.WriteLine(countries[counter].name);
                 total_pop += countries[counter].pop;
-                Console.WriteLine(total_pop);
                 counter++;
             }
 
             //Get percentage
-            minimum_population = (total_pop * 65) * 0.01;
-
-            Console.WriteLine(minimum_population);
+            minimum_population = (total_pop * percentage) * 0.01;
         }
 
-        public void get_minimum_states(List<Country> countries)
+        //Gets the minimum percentage of states needed for the vote to pass. the percentage value can be changed via argument
+        private static void get_minimum_states(List<Country> countries, int percentage)
         {
-            double total = 0;
+            int total = 0;
 
-            foreach (Country c in countries) //Goes through the list of countries, and add their pop to the total
+            //Goes through the list of countries, and add one to the total
+            foreach (Country c in countries) 
             {
                 total++;
             }
 
             //Get percentage
-            minimum_states = (total * 55) * 0.01;
-
+            minimum_states = (int)Math.Round((total * percentage) * 0.01);
             Console.WriteLine(minimum_states);
-            
         }
+
+
     }
 }

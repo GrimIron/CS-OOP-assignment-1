@@ -5,3 +5,9 @@ C:\Users\40017446\source\repos\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csp
 C:\Users\40017446\source\repos\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache
 C:\Users\40017446\source\repos\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.exe
 C:\Users\40017446\source\repos\ConsoleApp4\ConsoleApp4\obj\Debug\ConsoleApp4.pdb
+C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\bin\Debug\ConsoleApp4.exe.config
+C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\bin\Debug\ConsoleApp4.exe
+C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\bin\Debug\ConsoleApp4.pdb
+C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.csprojAssemblyReference.cache
+C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.exe
+C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.pdb
