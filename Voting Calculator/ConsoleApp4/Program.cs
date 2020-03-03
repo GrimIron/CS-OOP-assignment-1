@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Vot_calculator_v2
 
-{   //Face of the program that calls together the other classes 
+{   //Face of the program that calls together the other classes  
     class Program
     {
         static void Main(string[] args)
         {
-            welcome();              //the welcome message
-            prog_qm();                 //the calculator
+            welcome();                      //the welcome message
+            prog_qualified_majority();      //the calculator
 
             Console.ReadKey();
         }
@@ -23,10 +23,10 @@ namespace Vot_calculator_v2
             Console.WriteLine();
 
             Console.ReadKey();
-        } 
+        }
 
-        //Contains the Classes and functions for the Calculator 
-        private static void prog_qm()
+        //Contains the Classes and functions for the qualified majority calculator 
+        private static void prog_qualified_majority()
         {
             Voting_Calculator vc = new Voting_Calculator();                             //Initialises the Class Voting_Calculator
             Vote vote = new Vote();                                                     //Initialises the Class Vote
@@ -116,9 +116,9 @@ namespace Vot_calculator_v2
         //Displays how many countries votes for each vote e.g. yes: 20  no: 5  abstain: 2
         public void how_voted()
         {
-            Console.WriteLine("votes for yes:    " + yes_list_total());
-            Console.WriteLine("Votes for no:     " + no_list_total());
-            Console.WriteLine("Votes for abstain:" + abstain_list_total());
+            Console.WriteLine("votes for yes:     " + yes_list_total());
+            Console.WriteLine("Votes for no:      " + no_list_total());
+            Console.WriteLine("Votes for abstain: " + abstain_list_total());
         }
 
         //Counts how many countries voted yes
