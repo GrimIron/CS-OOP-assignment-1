@@ -15,6 +15,7 @@ namespace Vot_calculator_v2
         }
         
         //Contains the Welcome messages
+
         private static void welcome()
         {
             Console.WriteLine("Welcome to the Voting Calculator!");
@@ -276,7 +277,6 @@ namespace Vot_calculator_v2
 
             //Get percentage
             minimum_states = (int)Math.Round((total * percentage) * 0.01);
-            Console.WriteLine(minimum_states);
         }
 
 
