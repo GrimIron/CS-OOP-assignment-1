@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Vot_calculator_v2
 
-{   // Face of the program that calls together the other classes 
+{   //Face of the program that calls together the other classes 
     class Program
     {
         static void Main(string[] args)
         {
             welcome();              //the welcome message
-            prog();                 //the calculator
+            prog_qm();                 //the calculator
 
             Console.ReadKey();
         }
@@ -26,7 +26,7 @@ namespace Vot_calculator_v2
         } 
 
         //Contains the Classes and functions for the Calculator 
-        private static void prog()
+        private static void prog_qm()
         {
             Voting_Calculator vc = new Voting_Calculator();                             //Initialises the Class Voting_Calculator
             Vote vote = new Vote();                                                     //Initialises the Class Vote
@@ -56,6 +56,7 @@ namespace Vot_calculator_v2
         }
     }
 
+    //Gets the Votes for the countries and contains the lists that the countries are moved into after getting the votes
     class Vote
     {
         private static List<Country> yes_votes = new List<Country>();
@@ -158,7 +159,7 @@ namespace Vot_calculator_v2
 
     }
 
-    // Stores the data used by countries  
+    //Stores the data used by countries  
     class Country
     {
         //Data
@@ -168,7 +169,7 @@ namespace Vot_calculator_v2
         public int vote { get; set; }
     }
 
-    // Contains the methods for determining if the vote passed or not, and calculates the minimum pop and states needed for the voting methods
+    //Contains the methods for determining if the vote passed or not, and calculates the minimum pop and states needed for the voting methods
     class Voting_Calculator
     {
         private static double minimum_population {get; set;}
