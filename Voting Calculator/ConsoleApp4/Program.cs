@@ -9,13 +9,13 @@ namespace Vot_calculator_v2
         static void Main(string[] args)
         {
             welcome();                      //the welcome message
-            prog_qualified_majority();      //the calculator
+
+            vote_choice();                  //Asks the user to check what vote type they want to use
 
             Console.ReadKey();
         }
         
         //Contains the Welcome messages
-
         private static void welcome()
         {
             Console.WriteLine("Welcome to the Voting Calculator!");
@@ -24,6 +24,69 @@ namespace Vot_calculator_v2
             Console.WriteLine();
 
             Console.ReadKey();
+        }
+
+        //Asks the user what vote type they want to use and then runs it
+        private static void vote_choice()
+        {
+            int choice;
+            do
+            {
+                Console.WriteLine("What vote do you want to use:");
+                Console.WriteLine("Enter 1 for Qualified Majority");
+                Console.WriteLine("Enter 2 for Simple Majority");
+                Console.WriteLine("Enter 3 for Reinforced Qualified Majority");
+                Console.WriteLine("Enter 4 for Unamity");
+            }
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice > 4);
+
+            if (choice == 1)
+            {
+                prog_qualified_majority();
+            }
+            else if (choice == 2)
+            {
+                prog_simple_majority();
+            }
+            else if (choice == 3)
+            {
+                Console.WriteLine("Not implimeted yet");
+            }
+            else
+            {
+                prog_unanimity();
+            }
+
+        }
+
+        //Contains the Classes and functions for the unanimity calculator 
+        private static void prog_unanimity()
+        {
+            Voting_Calculator vc = new Voting_Calculator();                             //Initialises the Class Voting_Calculator
+            Vote vote = new Vote();                                                     //Initialises the Class Vote
+
+            List<Country> countries = vc.list_countries();                              //Generates a list of countries
+            vote.get_votes(countries);                                                  //Asks the user for the vote for the countries and adds it the the list of countries
+            bool pass = vc.unanimity(countries, vote.return_yes_list());          //Returns a true or false value based on the qualified majority rule set
+
+            result(pass);                                                               //Runs the function result() the output wether the vote passed or not
+
+            vote.how_voted();                                                           //Displays how many countries voted for each vote
+        }
+
+        //Contains the Classes and functions for the simple_majority calculator 
+        private static void prog_simple_majority()
+        {
+            Voting_Calculator vc = new Voting_Calculator();                             //Initialises the Class Voting_Calculator
+            Vote vote = new Vote();                                                     //Initialises the Class Vote
+
+            List<Country> countries = vc.list_countries();                              //Generates a list of countries
+            vote.get_votes(countries);                                                  //Asks the user for the vote for the countries and adds it the the list of countries
+            bool pass = vc.simple_majority(countries, vote.return_yes_list());          //Returns a true or false value based on the qualified majority rule set
+
+            result(pass);                                                               //Runs the function result() the output wether the vote passed or not
+
+            vote.how_voted();                                                           //Displays how many countries voted for each vote
         }
 
         //Contains the Classes and functions for the qualified majority calculator 
@@ -173,10 +236,10 @@ namespace Vot_calculator_v2
     //Contains the methods for determining if the vote passed or not, and calculates the minimum pop and states needed for the voting methods
     class Voting_Calculator
     {
-        private static double minimum_population {get; set;}
-        private static int minimum_states { get; set; }
-        private double total_pop = 0;
-        private double total_states = 0;
+        private static double minimum_population {get; set; }  //Gets set by calculate_total_pop_and_states(List<Country> yes_votes)
+        private static int minimum_states { get; set; }        //Gets set by calculate_total_pop_and_states(List<Country> yes_votes)
+        private double total_pop = 0;                          //Gets set by get_minimum_pop(List<Country> countries, int percentage)
+        private double total_states = 0;                       //Gets set by get_minimum_states(List<Country> countries, int percentage)
 
         //Generates the list of countries
         public List<Country> list_countries()
@@ -214,23 +277,8 @@ namespace Vot_calculator_v2
             return countries;
         }
 
-        //Add the number of states in the yes vote list and returns, and adds their total pop together
-        private void calculate_total_pop_and_states(List<Country> yes_votes)
-        {
-            int counter = 0;
-
-            foreach (Country c in yes_votes)
-            {
-                total_pop += c.pop;
-                total_states++;
-                //Console.WriteLine(total_pop);
-                //Console.WriteLine(total_states);
-
-                counter++;
-            }
-        }
-        
-        //Contans the method for working out the result of the vote using a qualified majority
+       
+        //Contans the method for working out the result of the vote using a qualified majority vote
         public bool qualified_majority(List<Country> countries, List<Country> yes_votes)
         {
             calculate_total_pop_and_states(yes_votes);
@@ -244,6 +292,52 @@ namespace Vot_calculator_v2
             else
             {
                 return false;
+            }
+        }
+
+        //Contans the method for working out the result of the vote using a unanimity vote
+        public bool unanimity(List<Country> countries, List<Country> yes_votes)
+        {
+            calculate_total_pop_and_states(yes_votes);
+            get_minimum_states(countries, 100);
+
+            if (total_states == minimum_states)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //Contans the method for working out the result of the vote using a simple majority vote
+        public bool simple_majority(List<Country> countries, List<Country> yes_votes)
+        {
+            calculate_total_pop_and_states(yes_votes);
+            get_minimum_states(countries, 55);  //total states needs to be of 55% of minimum states to pass
+
+            if (total_states >= minimum_states)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //Add the number of states in the yes vote list and returns, and adds their total pop together
+        private void calculate_total_pop_and_states(List<Country> yes_votes)
+        {
+            int counter = 0;
+
+            foreach (Country c in yes_votes)
+            {
+                total_pop += c.pop;
+                total_states++;
+
+                counter++;
             }
         }
 
