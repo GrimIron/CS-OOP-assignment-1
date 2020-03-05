@@ -11,3 +11,9 @@ C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\Conso
 C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.csprojAssemblyReference.cache
 C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.exe
 C:\Users\ODSTc\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.pdb
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\bin\Debug\ConsoleApp4.exe.config
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\bin\Debug\ConsoleApp4.exe
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\bin\Debug\ConsoleApp4.pdb
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.csprojAssemblyReference.cache
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.exe
+C:\Users\40017446\Source\Repos\GrimIron\CS-OOP-assignment-1\Voting Calculator\ConsoleApp4\obj\Debug\ConsoleApp4.pdb

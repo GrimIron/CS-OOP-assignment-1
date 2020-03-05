@@ -50,13 +50,28 @@ namespace Vot_calculator_v2
             }
             else if (choice == 3)
             {
-                Console.WriteLine("Not implimeted yet");
+                prog_reinforced_qualifies_majority();
             }
             else
             {
                 prog_unanimity();
             }
 
+        }
+
+        //Contains the Classes and functions for the Reinforced qualified majority calculator 
+        private static void prog_reinforced_qualifies_majority()
+        {
+            Voting_Calculator vc = new Voting_Calculator();                                         //Initialises the Class Voting_Calculator
+            Vote vote = new Vote();                                                                 //Initialises the Class Vote
+
+            List<Country> countries = vc.list_countries();                                          //Generates a list of countries
+            vote.get_votes(countries);                                                              //Asks the user for the vote for the countries and adds it the the list of countries
+            bool pass = vc.reinforced_qualifies_majority(countries, vote.return_yes_list());        //Returns a true or false value based on the qualified majority rule set
+
+            result(pass);                                                                           //Runs the function result() the output wether the vote passed or not
+
+            vote.how_voted();                                                                       //Displays how many countries voted for each vote
         }
 
         //Contains the Classes and functions for the unanimity calculator 
@@ -67,7 +82,7 @@ namespace Vot_calculator_v2
 
             List<Country> countries = vc.list_countries();                              //Generates a list of countries
             vote.get_votes(countries);                                                  //Asks the user for the vote for the countries and adds it the the list of countries
-            bool pass = vc.unanimity(countries, vote.return_yes_list());          //Returns a true or false value based on the qualified majority rule set
+            bool pass = vc.unanimity(countries, vote.return_yes_list());                //Returns a true or false value based on the qualified majority rule set
 
             result(pass);                                                               //Runs the function result() the output wether the vote passed or not
 
@@ -278,7 +293,7 @@ namespace Vot_calculator_v2
         }
 
        
-        //Contans the method for working out the result of the vote using a qualified majority vote
+        //Contians the method for working out the result of the vote using a qualified majority vote
         public bool qualified_majority(List<Country> countries, List<Country> yes_votes)
         {
             calculate_total_pop_and_states(yes_votes);
@@ -311,13 +326,30 @@ namespace Vot_calculator_v2
             }
         }
 
-        //Contans the method for working out the result of the vote using a simple majority vote
+        //Contians the method for working out the result of the vote using a simple majority vote
         public bool simple_majority(List<Country> countries, List<Country> yes_votes)
         {
             calculate_total_pop_and_states(yes_votes);
-            get_minimum_states(countries, 55);  //total states needs to be of 55% of minimum states to pass
+            get_minimum_states(countries, 50);  //total states needs to be of 55% of minimum states to pass
 
             if (total_states >= minimum_states)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //Contains the method for working out the result of the vote using a reinforced qualified majority vote
+        public bool reinforced_qualifies_majority(List<Country> countries, List<Country> yes_votes)
+        {
+            calculate_total_pop_and_states(yes_votes);
+            get_minimum_pop(countries, 65);
+            get_minimum_states(countries, 72);
+
+            if (total_pop >= minimum_population && total_states>= minimum_states)
             {
                 return true;
             }
